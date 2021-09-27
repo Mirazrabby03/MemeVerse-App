@@ -35,7 +35,7 @@ export function Post({ post}) {
     
     useEffect(()=>{
         const fetchUser = async() => {
-         const res = await axiosInstance.get(`users/${post.userId}`);  
+         const res = await axiosInstance.get(`/users?userId=${post.userId}`);  
         setUser(res.data)
         };
         fetchUser();
@@ -70,7 +70,7 @@ const likeHandler =()=>{
         <div className="postWrapper">
             <div className="postTop">
                 <div className="postTopLeft">
-                    <img className="postProfileImg" src={user.profilePicture || "assets/person/noAvatar.png"} alt=""/>
+                    <img className="postProfileImg" src={user.profilePicture || PF + "person/noAvatar.png"} alt=""/>
                     <span className="postUserName">{user.username}</span>
                     {/* {user.username !== currentUser.username &&(
           <button className="followButton" onClick={handleClick}>

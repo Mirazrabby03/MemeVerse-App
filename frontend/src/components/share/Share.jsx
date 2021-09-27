@@ -45,8 +45,9 @@ export const Share = (props) => {
         <div className="shareWrapper">
             <div className="shareTop">
                 <img className="shareProfileimg" src={user.profilePicture ? PF+user.profilePicture : PF+"person/noAvatar.png"} alt="" />
+        
                 <input 
-                placeholder="Share your meme here" 
+                placeholder={"Share your meme here " + "" + user.username}
                 className="shareInput" 
                 ref={desc}
                 />

@@ -8,6 +8,7 @@ import  Login  from "./container/login/Login";
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext.js";
+import Profile from "./container/profile/Profile.jsx";
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
         <Route path="/register">
           {user? <Redirect to="/" /> : <Register/>}
         <HomePage/>
+        </Route>
+        <Route path="/profile/:username">
+          <Profile />
         </Route>
       </Switch>
     </Router>

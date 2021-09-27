@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import axiosInstance from '../../axios'
 import {useHistory} from 'react-router'
+import {Link} from 'react-router-dom';
 
 import "./register.css"
 
@@ -47,8 +48,9 @@ export const Register = (props) => {
                 <input placeholder="Password" required type="password" minLength="6" ref={password} className="loginInput" />
                 <input placeholder="ConfirmPassword" required type="password"  ref={confirmPassword} className="loginInput" />
                 <button className="loginButton" type="submit">Sign Up</button>
+                <Link to="/login">
                 <button className="loginRegisterButton">Log into Account</button>
-                
+                </Link>
             </form>
         </div>
         </div>

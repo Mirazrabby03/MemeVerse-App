@@ -7,14 +7,16 @@ import axiosInstance from '../../axios';
 import { AuthContext } from '../../context/AuthContext';
 // import { Posts } from '../../dummyData';
 
-export const Feed = (props) => {
+export const Feed = ({username}) => {
   const[posts, setPosts] = useState([])
 
   const {user} = useContext(AuthContext);
 
   useEffect(()=>{
     const fetchPosts = async() => {
-     const res = await axiosInstance.get("posts/timeline/" + user._id);
+     const res = username ?
+     await axiosInstance.get("posts/profile/" + username) :
+     await axiosInstance.get(`posts/timeline/${user._id}`);
     setPosts(res.data.sort((p1, p2)=>{
       return new Date(p2.createdAt) - new Date(p1.createdAt);
     })
@@ -27,8 +29,8 @@ export const Feed = (props) => {
   return(
     <div className="feed">
         <div className="feedWrapper">
-            <Share/>
-            {/* <Post/> */}
+           {(!username || username ===user.username) && <Share/>}
+           
           {posts.map((p)=>( 
             <Post key={p._id} post ={p} />
           ))}

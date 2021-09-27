@@ -105,4 +105,14 @@ const newsFeed = async(req,res)=>{
         res.status(500).json(err)
     }
 }
-module.exports = {addPost, updatePost, deletePost,commentPost, likePost, getPost, newsFeed}
+const getUserAllPost = async (req, res) =>{
+    try{
+        const user = await User.findOne({username: req.params.username});
+        const posts = await Post.find({userId: user._id})
+        res.status(200).json(posts);
+    }catch(err){
+        res.status(500).json(err)
+    }
+    
+}
+module.exports = {addPost, updatePost, deletePost,commentPost, likePost, getPost, newsFeed,getUserAllPost}

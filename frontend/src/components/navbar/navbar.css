@@ -45,3 +45,10 @@
     object-fit: cover;
     cursor: pointer;
 }
+.navbarUsername{
+    font-weight: 500;
+    margin: 0 5px;
+    text-transform: capitalize;
+    cursor: pointer;
+    
+}
